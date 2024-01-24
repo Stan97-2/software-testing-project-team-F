@@ -7,6 +7,8 @@ import org.junit.jupiter.api.*;
 import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class EmployeeTest {
     // Shared between all tests in this class.
     static Playwright playwright;
@@ -41,6 +43,7 @@ public class EmployeeTest {
     }
 
     @Test
+    @Order(1)
     void createEmployee() {
 
         page.navigate("https://f.hr.dmerej.info/");
@@ -66,6 +69,7 @@ public class EmployeeTest {
     }
 
     @Test
+    @Order(2)
     void updateAddress() {
         page.navigate("https://f.hr.dmerej.info/");
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("List Employees")).click();
