@@ -7,6 +7,8 @@ import org.junit.jupiter.api.*;
 import java.util.regex.Pattern;
 
 import static com.microsoft.playwright.assertions.PlaywrightAssertions.assertThat;
+
+@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class TeamTest {
     static Playwright playwright;
     static Browser browser;
@@ -38,6 +40,7 @@ public class TeamTest {
     }
 
     @Test
+    @Order(1)
     void createTeam() {
         page.navigate("https://f.hr.dmerej.info/");
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Create new team")).click();
