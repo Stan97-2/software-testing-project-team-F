@@ -61,7 +61,6 @@ public class CreateEmployeeTest {
         page.getByPlaceholder("Job title").click();
         page.getByPlaceholder("Job title").fill("Tester");
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Add")).click();
-
         assertThat(page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName(Pattern.compile(employeeName))).last()).containsText(employeeName);
         assertThat(page.getByRole(AriaRole.CELL, new Page.GetByRoleOptions().setName(Pattern.compile(employeeMail))).last()).containsText(employeeMail);
     }
