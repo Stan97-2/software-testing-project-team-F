@@ -11,6 +11,8 @@ public class EmployeeTest {
     // Shared between all tests in this class.
     static Playwright playwright;
     static Browser browser;
+    static String employeeName = "Employee";
+    static String employeeMail = "employee@gmail.com";
 
     // New instance for each test method.
     BrowserContext context;
@@ -40,8 +42,6 @@ public class EmployeeTest {
 
     @Test
     void createEmployee() {
-        String employeeName = "Employee";
-        String employeeMail = "employee@gmail.com";
 
         page.navigate("https://f.hr.dmerej.info/");
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Add new employee")).click();
@@ -69,7 +69,7 @@ public class EmployeeTest {
     void updateAddress() {
         page.navigate("https://f.hr.dmerej.info/");
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("List Employees")).click();
-        page.getByRole(AriaRole.ROW, new Page.GetByRoleOptions().setName("Employee7 employee7@gmail.com")).getByRole(AriaRole.LINK).first().click();
+        page.getByRole(AriaRole.ROW, new Page.GetByRoleOptions().setName(employeeName+" "+employeeMail)).getByRole(AriaRole.LINK).first().click();
         page.getByRole(AriaRole.LINK, new Page.GetByRoleOptions().setName("Update address")).click();
         String previousAddressA = page.locator("#id_address_line1").getAttribute("value");
         String previousAddressB = page.locator("#id_address_line2").getAttribute("value");
